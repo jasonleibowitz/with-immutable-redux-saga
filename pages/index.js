@@ -22,4 +22,4 @@ class Counter extends React.Component {
   }
 }
 
-export default connect(state => state)(Counter);
+export default connect()(Counter);
