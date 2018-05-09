@@ -21,6 +21,7 @@ function reducer (state = exampleInitialState, action) {
       return state.merge({ placeholderData: action.data });
 
     case actionTypes.TICK_CLOCK:
+      console.log('/// in reducer - tick clock:', state);
       return state.merge({ lastUpdate: action.ts, light: !!action.light });
 
     default:

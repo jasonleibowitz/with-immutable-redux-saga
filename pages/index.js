@@ -8,7 +8,6 @@ class Counter extends React.Component {
   static async getInitialProps ({ store, isServer }) {
     store.dispatch(tickClock(isServer))
     store.dispatch(increment())
-    console.log('/// index gip', store.getState().placeholderData);
     if (!store.getState().placeholderData) {
       store.dispatch(loadData())
     }

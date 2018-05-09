@@ -4,6 +4,7 @@ import App, { Container } from 'next/app';
 import withRedux from 'next-redux-wrapper';
 import nextReduxSaga from 'next-redux-saga';
 import { configureStore } from '../store';
+import { deserialize, serialize } from 'json-immutable';
 
 class MyApp extends React.Component {
   static async getInitialProps({ Component, ctx }) {
@@ -26,4 +27,13 @@ class MyApp extends React.Component {
   }
 }
 
-export default withRedux(configureStore)(nextReduxSaga(MyApp));
+export default withRedux(configureStore, {
+  serializeState: state => {
+    console.log('/// serializeState', state);
+    return state;
+  },
+  deserializeState: state => {
+    console.log('/// deserializeState', state);
+    return state;
+  }
+})(nextReduxSaga(MyApp));
