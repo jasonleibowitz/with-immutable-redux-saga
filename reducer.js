@@ -21,6 +21,8 @@ function reducer (state = exampleInitialState, action) {
       return state.merge({ placeholderData: action.data });
 
     case actionTypes.TICK_CLOCK:
+      // On SSR state is always an immutable Map.
+      // However, on client side rendering it's a POJO
       console.log('/// in reducer - tick clock:', state);
       return state.merge({ lastUpdate: action.ts, light: !!action.light });
 
