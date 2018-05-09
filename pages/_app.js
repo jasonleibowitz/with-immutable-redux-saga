@@ -5,6 +5,7 @@ import withRedux from 'next-redux-wrapper';
 import nextReduxSaga from 'next-redux-saga';
 import { configureStore } from '../store';
 import { deserialize, serialize } from 'json-immutable';
+import { fromJS } from 'immutable';
 
 class MyApp extends React.Component {
   static async getInitialProps({ Component, ctx }) {
@@ -29,10 +30,12 @@ class MyApp extends React.Component {
 
 export default withRedux(configureStore, {
   serializeState: state => {
+    // state here is always an immutable Map
     console.log('/// serializeState', state);
-    return state;
+    return fromJS(state);
   },
   deserializeState: state => {
+    // state here is always undefined. See in the terminal log
     console.log('/// deserializeState', state);
     return state;
   }
