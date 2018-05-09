@@ -7,7 +7,7 @@ import { configureStore } from '../store';
 import { deserialize, serialize } from 'json-immutable';
 import { fromJS } from 'immutable';
 
-class MyApp extends React.Component {
+class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
       ? await Component.getInitialProps(ctx)
